@@ -1,10 +1,17 @@
 # Anonymization Tool
-A tool for Anonymizing identifiable value in Data such as IMEI,IMSI, Mobile No.
+A tool for Anonymizing identifiable value in Data such as IMEI,IMSI, Mobile No. It is Java application which can be run in any operating system and also support running anonymization  with multi-thread to speed up the process. Using a machine with a GPU will make encoding faster. 
+
 
 ![Screenshot](docs/anony1.png)
 
 **Example of data after anonymization**
 ![Screenshot](docs/anony2.png)
+
+
+## How it works
+In principle,  program receive raw CDR data in CSV as an input. Then it will start anonymization using algorithm “SHA256” with “Salt file” which need to be same for all MNO. “Salt file” is a complementary text to enhance security. The program works in Multithread to make the encoding faster. 
+![Screenshot](docs/anony3.png)
+
 
 
 ## Prerequisites
@@ -56,3 +63,4 @@ Java JDK 8 or higher
 }
 
 ```
+
