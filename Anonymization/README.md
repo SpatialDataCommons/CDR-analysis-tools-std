@@ -49,7 +49,7 @@ Java JDK 8 or higher
 	{"inputNo":2,   "outputNo":2,   "name":"IMSI_Caller",         "anonymize":"true"},
 	{"inputNo":3,   "outputNo":3,   "name":"Call_Start",          "anonymize":"false"},
 	{"inputNo":4,   "outputNo":4,   "name":"Call_Duration",       "anonymize":"false"},
-	{"inputNo":5,   "outputNo":5,   "name":"LAC_Caller",		  "anonymize":"false"},
+	{"inputNo":5,   "outputNo":5,   "name":"LAC_Caller",	      "anonymize":"false"},
 	{"inputNo":6,   "outputNo":6,   "name":"CELL_ID_Celler",      "anonymize":"false"},
 	{"inputNo":7,   "outputNo":7,   "name":"Activity_Type",       "anonymize":"false"}
  ]
