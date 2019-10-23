@@ -1,6 +1,10 @@
 # Anonymization Tool
 A tool for Anonymizing identifiable value in Data such as IMEI,IMSI, Mobile No.
 
+![Screenshot](docs/anony1.png)
+
+**Example of data after anonymization**
+![Screenshot](docs/anony2.png)
 
 
 ## Prerequisites
