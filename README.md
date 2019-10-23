@@ -27,8 +27,9 @@ These instructions will get you a copy of the software package and running on yo
 |          - Polygon-based aggregation with time-series (under development)
 │
 ├─InfrastructureUpdates:
-|       A set of tools for creating infrastructure data files/database such as PoI data, Road Network Data, Voronoi of Cell Tower
-
+|       A set of tools for creating infrastructure data files/database 
+|       such as PoI data, Road Network Data, Voronoi of Cell Tower
+|
 
 ```
 
