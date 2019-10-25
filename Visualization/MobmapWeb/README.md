@@ -1,7 +1,7 @@
 # Mobmap: Visualization and Analysis of Movement Data
 An online tool for visualization and analysis of movement/trajectory data such as GPS/CDR. with its functionally, it supports color labeling, various maker style and data filter.  
 
-![Screenshot](docs/mobmap.jpg)
+![Screenshot](docs/mobmap.JPG)
 
 
 ## How it works
@@ -37,7 +37,7 @@ Please access to the link to download tutorial file: [MobmapTutorial](MobmapTuto
 * Additional columns are acceptable, e.g. transportation
 * Header line can exclude at loading data
 
-![Screenshot](docs/csvformat.jpg)
+![Screenshot](docs/csvformat.JPG)
 
 ## Personal use
 
