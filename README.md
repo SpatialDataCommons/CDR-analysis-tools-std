@@ -36,7 +36,7 @@ These instructions will get you a copy of the software package and running on yo
 
 ## License
 
-This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
+Free to use and distribute with acknowledgement.
 
 ## Acknowledgments
 

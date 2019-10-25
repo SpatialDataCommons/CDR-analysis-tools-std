@@ -32,9 +32,6 @@ Java JDK 8 or higher
     java -classpath .:lib/* jp.utokyo.shibalab.csvanonymization.AnonymizationMain config.json
     ```
 
-
-
-
 ## Configuration (config.json)
 ```
 {
@@ -63,4 +60,16 @@ Java JDK 8 or higher
 }
 
 ```
+
+## Author
+**Hiroshi KANASUGI** :  A project researcher at Center for Spatial Information Science, University of Tokyo.
+
+## License
+
+Free to use
+
+## Acknowledgments
+
+* [Shibasaki Lab](https://shiba.iis.u-tokyo.ac.jp), The University of Tokyo
+* [Center for Spatial Information Science](http://www.csis.u-tokyo.ac.jp/en/), The University of Tokyo
 
