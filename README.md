@@ -41,7 +41,7 @@ Java JDK 8 or higher
 ## Software List
 
 #### Anonymization 
-* A tool for Anonymizing identifiable value in Data such as IMEI,IMSI, Mobile No.
+* A tool for Anonymizing identifiable value in Data such as IMEI,IMSI, Mobile No. It is Java application which can be run in any operating system and also support running anonymization  with multi-thread to speed up the process. Using a machine with a GPU will make encoding faster. 
 * See the link: [Anonymization Tool](/Anonymization)
 ___
 #### Visualization - Mobmap Online 
