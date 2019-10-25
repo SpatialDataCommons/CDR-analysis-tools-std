@@ -1,0 +1,23 @@
+{
+	"global": {
+		"base-map": {
+			"lat": 35.23682656,
+			"lng": 135.9392372,
+			"zoom": 10
+		},
+
+		"begin-time":  0,
+		"end-time":    86400,
+		"step":        40
+	},
+	
+	"layers": [
+		{
+			"type": "MovingPoints",
+			"source": "dataset/mobmap.csv",
+			"marker": "Color-Spot",
+			"appearance": "spot",
+			"color-rule": "user-specified"
+		}
+	]
+}

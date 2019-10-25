@@ -17,16 +17,16 @@ These instructions will get you a copy of the software package and running on yo
 │
 ├─Interpolation:
 |       A set of software for route interpolation including 
-|           - Extracting stay points
-|           - Extract tripsegment
-|           - Relocation PoI
-|           - Route Interpolation with transpotation network
+|         - Extracting stay points
+|         - Extract tripsegment
+|         - Relocation PoI
+|         - Route Interpolation with transpotation network
 │
 ├─Visualization:
 |       A set of tools for drawing trajectory data on map and generating movie data 
-|          - Render Trajectory with [Mobmap Web](https://shiba.iis.u-tokyo.ac.jp/member/ueyama/mm/)
-|          - Render Trajectory with Mobmap App (Large Dataset, standalone application)
-|          - Polygon-based aggregation with time-series (under development)
+|         - Render Trajectory with [Mobmap Web](https://shiba.iis.u-tokyo.ac.jp/member/ueyama/mm/)
+|         - Render Trajectory with Mobmap App (Large Dataset, standalone application)
+|         - Polygon-based aggregation with time-series (under development)
 │
 ├─InfrastructureUpdates:
 |       A set of tools for creating infrastructure data files/database 
