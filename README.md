@@ -1,5 +1,7 @@
 # CDR Data Analysis Package (Standard Version)
-This is a set of software/tools for analysis of CDR (Call Detail Record) Data including anonymization, pre-processing, interpolation and visualization.
+This is a set of software/tools for analysis of CDR (Call Detail Record) Data including anonymization, pre-processing, interpolation and visualization. 
+
+**This repositoty is being update, some modules might not be available yet, keep checking!**
 
 ## Getting Started
 
@@ -32,6 +34,33 @@ These instructions will get you a copy of the software package and running on yo
 |
 
 ```
+
+## Prerequisites
+Java JDK 8 or higher
+
+## Software List
+
+### Anonymization 
+* A tool for Anonymizing identifiable value in Data such as IMEI,IMSI, Mobile No.
+* See the link: [Anonymization Tool](/Anonymization)
+***
+### Visualization - Mobmap Web 
+* An online tool for visualization and analysis of movement/trajectory data such as GPS/CDR. with its functionally, it supports color labeling, various maker style and data filter.
+* See the link: [Mobmap Online](/Visualization/MobmapWeb)
+***
+### Visualization - Mobmap Windows App
+* Large Dataset, standalone application
+* *Under development*
+***
+
+
+
+## Authors
+* Ryosuke Shibasaki
+* Hiroshi KANASUGI
+* Apichon Witayangkurn
+* Ayumi Arai
+* Satoshi Ueyama
 
 
 ## License
