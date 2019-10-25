@@ -1,45 +1,22 @@
-# CDR Data Analysis Package (Standard Version)
-This is a set of software/tools for analysis of CDR (Call Detail Record) Data including anonymization, pre-processing, interpolation and visualization.
+# MobmapNativeWin: Visualization and Analysis of Movement Data (Windows)
+An windows application tool for visualization and analysis of movement/trajectory data such as GPS/CDR. with its functionally, it supports large dataset.
 
-## Getting Started
+## Usage
+Under preparation
 
-These instructions will get you a copy of the software package and running on your local machine. It can be run on both Windows and Mac as the software was developed by Java.
+## Author
+* **Satoshi Ueyama** :  A project researcher at Center for Spatial Information Science, University of Tokyo, Japan until Oct. 2019, will be a researcher at LocationMind Inc. from Nov. 2019.
+In 2019 he obtained his Ph.D. in Engineering from the University of Tokyo. And he is interested in utilizing visualization and computer graphics in the field of geographic information.
 
-## Structure this package
-```
-├─Common:
-│       A set of necessary libraries.
-│
-├─Anonymization:
-│       A tool for Anonymizing identifiable value in Data such as IMEI,IMSI, Mobile No.
-│
-├─Interpolation:
-|       A set of software for route interpolation including 
-|           - Extracting stay points
-|           - Extract tripsegment
-|           - Relocation PoI
-|           - Route Interpolation with transpotation network
-│
-├─Visualization:
-|       A set of tools for drawing trajectory data on map and generating movie data 
-|          - Render Trajectory with [Mobmap Web](https://shiba.iis.u-tokyo.ac.jp/member/ueyama/mm/)
-|          - Render Trajectory with Mobmap App (Large Dataset, standalone application)
-|          - Polygon-based aggregation with time-series (under development)
-│
-├─InfrastructureUpdates:
-|       A set of tools for creating infrastructure data files/database 
-|       such as PoI data, Road Network Data, Voronoi of Cell Tower
-|
-
-```
-
+* **Hiroshi KANASUGI** :  A project researcher at Center for Spatial Information Science, University of Tokyo.
 
 ## License
 
-This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
+Free to use
 
 ## Acknowledgments
 
 * [Shibasaki Lab](https://shiba.iis.u-tokyo.ac.jp), The University of Tokyo
 * [Center for Spatial Information Science](http://www.csis.u-tokyo.ac.jp/en/), The University of Tokyo
+
 
