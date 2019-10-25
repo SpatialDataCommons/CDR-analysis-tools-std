@@ -1,4 +1,4 @@
-# MobmapNativeWin: Visualization and Analysis of Movement Data (Windows)
+# MobmapNativeWin: Visualization Movement Data (Windows)
 An windows application tool for visualization and analysis of movement/trajectory data such as GPS/CDR. with its functionally, it supports large dataset.
 
 ## Usage
