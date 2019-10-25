@@ -44,12 +44,12 @@ Java JDK 8 or higher
 * A tool for Anonymizing identifiable value in Data such as IMEI,IMSI, Mobile No.
 * See the link: [Anonymization Tool](/Anonymization)
 ___
-#### Visualization - Mobmap Web 
+#### Visualization - Mobmap Online 
 * An online tool for visualization and analysis of movement/trajectory data such as GPS/CDR. with its functionally, it supports color labeling, various maker style and data filter.
 * See the link: [Mobmap Online](/Visualization/MobmapWeb)
 ***
-#### Visualization - Mobmap Windows App
-* Large Dataset, standalone application
+#### Visualization - Mobmap Win App
+* An windows application tool for visualization of movement/trajectory data such as GPS/CDR. It supports larger dataset compare to Mobmap Online.
 * See the link: [Mobmap Native Win ](/Visualization/MobMapNativeWin)
 * *Under development*
 ***
