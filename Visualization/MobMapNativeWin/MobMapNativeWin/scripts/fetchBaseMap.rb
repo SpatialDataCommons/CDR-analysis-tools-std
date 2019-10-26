@@ -1,7 +1,7 @@
 #!/var/ruby19/bin/ruby
 
 API_BASE = "http://maps.google.co.jp/maps/api/staticmap?"
-API_KEY  = "AIzaSyDfuDI3rJI87DoxiwL2wKn2TEnP6HTvUe4"	# updated at 2018.10.11
+API_KEY  = "Please put google map key here"	# updated at 2018.10.11
 TILE_SIZE = 640
 OVERLAP   = 48
 DL_DIR   = "./temp"
