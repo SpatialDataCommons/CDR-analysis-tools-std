@@ -51,7 +51,6 @@ ___
 #### Visualization - Mobmap Win App
 * An windows application tool for visualization of movement/trajectory data such as GPS/CDR. It supports larger dataset compare to Mobmap Online.
 * See the link: [Mobmap Native Win ](/Visualization/MobMapNativeWin)
-* *Under development*
 ***
 
 

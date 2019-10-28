@@ -7,7 +7,7 @@ An windows application tool for visualization and analysis of movement/trajector
 ## Prerequisites
 * Ruby 2.6+ ([https://rubyinstaller.org](https://rubyinstaller.org))
 * Google Map Token Key with static map enable
- ([https://developers.google.com/maps/documentation/javascript/get-api-key](https://developers.google.com/maps/documentation/javascript/get-api-key))
+  ([https://developers.google.com/maps/documentation/javascript/get-api-key](https://developers.google.com/maps/documentation/javascript/get-api-key))
 
 ## Usage
 1. Open "run.bat" and update Ruby path
