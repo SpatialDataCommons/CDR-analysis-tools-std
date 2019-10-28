@@ -1,6 +1,9 @@
 # MobmapNativeWin: Visualization Movement Data
 An windows application tool for visualization and analysis of movement/trajectory data such as GPS/CDR. with its functionally, it supports large dataset.
 
+![Screenshot](SampleOutput/frames/0352.png)
+
+
 ## Prerequisites
 * Ruby 2.6+ ([https://rubyinstaller.org](https://rubyinstaller.org))
 * Google Map Token Key with static map enable ([https://developers.google.com/maps/documentation/javascript/get-api-key](https://developers.google.com/maps/documentation/javascript/get-api-key))
