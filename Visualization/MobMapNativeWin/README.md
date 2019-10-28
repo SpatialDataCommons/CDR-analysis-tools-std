@@ -6,7 +6,8 @@ An windows application tool for visualization and analysis of movement/trajector
 
 ## Prerequisites
 * Ruby 2.6+ ([https://rubyinstaller.org](https://rubyinstaller.org))
-* Google Map Token Key with static map enable ([https://developers.google.com/maps/documentation/javascript/get-api-key](https://developers.google.com/maps/documentation/javascript/get-api-key))
+* Google Map Token Key with static map enable
+ ([https://developers.google.com/maps/documentation/javascript/get-api-key](https://developers.google.com/maps/documentation/javascript/get-api-key))
 
 ## Usage
 1. Open "run.bat" and update Ruby path
@@ -34,15 +35,15 @@ OUT_BASENAME = "basemap"
 ```
 {
 	"global": {
-		"base-map": {                       ## Specify center of map for rendering
+		"base-map": {                           ## Specify center of map for rendering
 			"lat": 39.546412, 
 			"lng": 140.822754,
 			"zoom": 9                       ## Specify zoom level
 		}, 
 
-		"begin-time":  0,                   ## Specify start time in seconds
-		"end-time":    86400,               ## Specify end time in seconds
-		"step":        40                   ## Specify moving step in seconds
+		"begin-time":  0,                       ## Specify start time in seconds
+		"end-time":    86400,                   ## Specify end time in seconds
+		"step":        40                       ## Specify moving step in seconds
 	},
 	
 	"layers": [
