@@ -78,44 +78,44 @@
 The format is same for trip segmentation and interpolation. the result are packed as trip data separated for each user and date. Output result contain 11 columns including user id, date, trip sequence, mobility type, transportation mode, total distance, total time, start time, end time, total points and point lists. Output are in CSV file (Comma-Separated Value). Explanation of each column is expressed as following. 
 
 ```
-1.	User Id
+1. User Id
     •	Column name: UID
     •	Unique for each device
     •	Encrypted using Hash function, irreversible
-2.	Date
+2. Date
     •	Column name: DATE
     •	Date format: yyyy-MM-dd
     •	Example: 2015-12-31
-3.	Trip Sequence
+3. Trip Sequence
     •	Column name: TRIP_SEQUENCE
     •	Order of sub trip in a day, start from 1
-4.	Mobility Type
+4. Mobility Type
     •	Column name: MOBILITY_TYPE
     •	Value: STAY or MOVE
-5.	Transportation Mode
+5. Transportation Mode
     •	Column name: TRANSPORT_MODE
     •	Indicate mode of transportation of corresponding sub trip
     •	Value: STAY, WALK, CAR
-6.	Total Distance 
+6. Total Distance 
     •	Column name: TOTAL_DISTANCE
     •	Total travel distance of sub trip in meter
-7.	Total Time
+7. Total Time
     •	Column name: TOTAL_TIME
     •	Total travel time of sub trip in second
-8.	Start Time 
+8. Start Time 
     •	Column name: START_TIME
     •	Indicate start time of sub trip
     •	Format: HH24:mm:ss
     •	Example: 23:20:00
-9.	End Time
+9. End Time
     •	Column name: END_TIME
     •	Indicate end time of sub trip
     •	Format: HH24:mm:ss
     •	Example: 23:20:00
-10.	Total Points 
+10. Total Points 
     •	Column name: TOTAL_POINTS
     •	Indicate total number of point data in sub trip
-11.	Point lists
+11. Point lists
     •	Column name: POINT_LISTS
     •	List of point data in sub trip
     •	Format: No.|time|latitude|longitude;
