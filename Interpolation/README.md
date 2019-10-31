@@ -79,12 +79,12 @@ The format is same for trip segmentation and interpolation. the result are packe
 
 ```
 1. User Id
-    • Column name: UID
-    • Unique for each device
-    • Encrypted using Hash function, irreversible
+    •   Column name: UID
+    •   Unique for each device
+    •   Encrypted using Hash function, irreversible
 2. Date
-    •	Column name: DATE
-    •	Date format: yyyy-MM-dd
+    •   Column name: DATE
+    •   Date format: yyyy-MM-dd
     •	Example: 2015-12-31
 3. Trip Sequence
     •	Column name: TRIP_SEQUENCE
