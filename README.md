@@ -24,7 +24,7 @@ These instructions will get you a copy of the software package and running on yo
 │
 ├─Visualization:
 |       A set of tools for drawing trajectory data on map and generating movie data 
-|         - Render Trajectory with [Mobmap Web](https://shiba.iis.u-tokyo.ac.jp/member/ueyama/mm/)
+|         - Render Trajectory with Mobmap Web (no need installation)
 |         - Render Trajectory with Mobmap App (Large Dataset, standalone application)
 |         - Polygon-based aggregation with time-series (under development)
 │
