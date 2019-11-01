@@ -11,6 +11,7 @@
 * Building/POIs for Reallocation
 * OSM road network data
 * Voronoi data of Cell tower/Base Station location
+* For sample data of POI and road network (88MB), [download here](shorturl.at/axMW0)
 
 
 ## Usage
