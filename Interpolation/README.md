@@ -48,35 +48,138 @@
 *  Open command prompt (cmd) and goto program path
 
     ```
-    D:\> cd D:\git\CDR-analysis-tools-std\Interpolation
-    D:\git\CDR-analysis-tools-std\Interpolation>
+    D:\> cd D:\CDR-analysis-tools-std\Interpolation
+    D:\CDR-analysis-tools-std\Interpolation>
     ```
 *  Run "tripsegmentation.bat $input". $input is the input folder
 
     ```
-    D:\git\CDR-analysis-tools-std\Interpolation>tripsegmentation.bat input\
+    D:\CDR-analysis-tools-std\Interpolation>tripsegmentation.bat input\
 
     ** All csv files in input folder will be processed **
     ```
-*  Output files are located in output\tripsegment folder. File name will start with tripsegment_result and padding with original name of the input file. For the format of output file, please refer to **Output Format** section.
+*  Output files for segmentation are located in **output\tripsegment** folder. File name will start with tripsegment_result and padding with original name of the input file. For the format of output file, please refer to **Output Format** section.
 
     ```
     Example:
-    tripsegment_result_2013-10-01.csv
-    tripsegment_result_2013-10-02.csv
+    output\tripsegment\tripsegment_result_2013-10-01.csv
+    output\tripsegment\tripsegment_result_2013-10-02.csv
+
+    ```
+*   Output files for segmentation with padding are located in **output\trippadding** folder. File name will start with tripsegment_result and padding with original name of the input file. ***[use this output for next step]***
+
+    ```
+    Example:
+    output\trippadding\pad_tripsegment_result_2013-10-01.csv
+    output\trippadding\pad_tripsegment_result_2013-10-02.csv
+
+    ```
+### Step 3: Stay Point Reallocation
+*  Make sure you have  Building/POIs data in Parameters folder with name is **relocation_pois.csv**
+
+    ```
+    D:\CDR-analysis-tools-std\Interpolation\parameters>relocation_pois.csv
 
     ```
 
+*  Open command prompt (cmd) and goto program path
 
-### Step 3: Stay Point Reallocation
-* ...
+    ```
+    D:\> cd D:\CDR-analysis-tools-std\Interpolation
+    D:\CDR-analysis-tools-std\Interpolation>
+    ```
+*  Run "staypointreallocation.bat $input". $input is the output of tripsegment with padding. commonly, it is in output/trippadding.
 
+    ```
+    D:\CDR-analysis-tools-std\Interpolation>staypointreallocation.bat output\trippadding
+
+    ** All csv files in input folder will be processed **
+    ** if Building/POIs file is different from default, you will need to change it in this bat file **
+    ```
+*  Output files for reallocation are located in **output\reallocation** folder. File name will start with tripsegment_result and padding with original name of the input file. ***[use this output for next step]**
+
+    ```
+    Example:
+    output\reallocation\reallo_pad_tripsegment_result_2013-10-01.csv
+    output\reallocation\reallo_pad_tripsegment_result_2013-10-02.csv
+
+    ```
 ### Step 4: Route Interpolation
-* ...
+*  Make sure you have  OSM road network data in Parameters folder with name is **osm_road.tsv**
+
+    ```
+    D:\CDR-analysis-tools-std\Interpolation\parameters>osm_road.tsv
+   
+    **file is in TSV (tab-separated-value)**
+    ```
+
+*  Open command prompt (cmd) and goto program path
+
+    ```
+    D:\> cd D:\CDR-analysis-tools-std\Interpolation
+    D:\CDR-analysis-tools-std\Interpolation>
+    ```
+*  Run "routeinterpolation.bat $input". $input is the output of reallocation. commonly, it is in output/reallocation.
+
+    ```
+    D:\CDR-analysis-tools-std\Interpolation>routeinterpolation.bat output\reallocation
+
+    ** All csv files in input folder will be processed **
+    ** if OSM road network file is different from default, you will need to change it in this bat file **
+    ```
+*  Output files for reallocation are located in **output\interpolation** folder. File name will start with tripsegment_result and padding with original name of the input file. 
+
+    ```
+    Example:
+    output\reallocation\interpo_reallo_pad_tripsegment_result_2013-10-01.csv
+    output\reallocation\interpo_reallo_pad_tripsegment_result_2013-10-02.csv
+
+    ```
+### Extra: Export For Mobmap
+*  Open command prompt (cmd) and goto program path
+
+    ```
+    D:\> cd D:\CDR-analysis-tools-std\Interpolation
+    D:\CDR-analysis-tools-std\Interpolation>
+    ```
+*  Run "exportformobmap.bat $input". $input is the output of interpolation. commonly, it is in output/interpolation.
+
+    ```
+    D:\CDR-analysis-tools-std\Interpolation>exportformobmap.bat output\interpolation
+
+    ** All csv files in input folder will be processed **
+    ```
+*  Output files for reallocation are located in **output\mobmap** folder. File name will start with tripsegment_result and padding with original name of the input file. 
+
+    ```
+    Example:
+    output\mobmap\mobmap_interpo_reallo_pad_tripsegment_result_2013-10-01.csv
+    output\mobmap\mobmap_interpo_reallo_pad_tripsegment_result_2013-10-02.csv
+    ```
+
+    Output format (CSV)
+    ```
+    Object ID     : Positive Integer value
+    Time          : “ hh:mm:ss ” or “YYYY MM DD hh:mm:ss ” format need to be sort in time order
+    Longitude (X) : Real Number(decimal degree) in WGS84
+    Latitude (Y)  : Real decimal degree) in WGS84
+    TripType      : 1 = STAY, 5 = MOVE
+    ```
+    Example
+    ```
+    
+    2,2013-10-01 00:00:00,81.53048700,7.27217900,1
+    2,2013-10-01 06:53:00,81.53048700,7.27217900,1
+    2,2013-10-01 06:53:00,81.53048700,7.27217900,5
+    2,2013-10-01 06:57:00,81.53304730,7.27593720,5
+    2,2013-10-01 06:57:27,81.53333480,7.27552790,5
+    2,2013-10-01 06:59:29,81.53448660,7.27353670,5
+    2,2013-10-01 07:01:28,81.53538780,7.27147200,5
+    ```
 
 
-## Output Format
-The format is same for trip segmentation and interpolation. the result are packed as trip data separated for each user and date. Output result contain 11 columns including user id, date, trip sequence, mobility type, transportation mode, total distance, total time, start time, end time, total points and point lists. Output are in CSV file (Comma-Separated Value). Explanation of each column is expressed as following. 
+## Output Format For Interpolation
+The result are packed as trip data separated for each user and date. Output result contain 11 columns including user id, date, trip sequence, mobility type, transportation mode, total distance, total time, start time, end time, total points and point lists. Output are in CSV file (Comma-Separated Value). Explanation of each column is expressed as following. 
 
 ```
 1. User Id
@@ -97,35 +200,43 @@ The format is same for trip segmentation and interpolation. the result are packe
     •	Column name: TRANSPORT_MODE
     •	Indicate mode of transportation of corresponding sub trip
     •	Value: STAY, WALK, CAR
-6. Total Distance 
+6. Spare field
+    •	not use for the moment
+7. Spare field
+    •	not use for the moment
+8. Total Distance 
     •	Column name: TOTAL_DISTANCE
     •	Total travel distance of sub trip in meter
-7. Total Time
+9. Total Time
     •	Column name: TOTAL_TIME
     •	Total travel time of sub trip in second
-8. Start Time 
+10. Start Time 
     •	Column name: START_TIME
     •	Indicate start time of sub trip
-    •	Format: HH24:mm:ss
-    •	Example: 23:20:00
-9. End Time
+    •	Format: seconds from 1st January 1970.
+    •	Example: 1380560400 
+11. End Time
     •	Column name: END_TIME
     •	Indicate end time of sub trip
-    •	Format: HH24:mm:ss
-    •	Example: 23:20:00
-10. Total Points 
+    •	Format: seconds from 1st January 1970.
+    •	Example: 1380560400 
+12. Total Points 
     •	Column name: TOTAL_POINTS
     •	Indicate total number of point data in sub trip
-11. Point lists
+13. Point lists
     •	Column name: POINT_LISTS
     •	List of point data in sub trip
     •	Format: No.|time|latitude|longitude;
     •	No. is order number start from 1.
-    •	Time: yyyy-MM-dd HH24:mm:ss
+    •	Time: seconds from 1st January 1970.
     •	Latitude and longitude in decimal format.
     •	Each point is separated by “;”
-    •	Example: 1|2015-06-06 13:53:23|8.450733|-13.268241
-  
+    •	Example: 1|1380560400|8.450733|-13.268241
+ 14. Network Id
+    •	Column name: NETWORK_ID
+    •	Indicate road link id
+15. Spare field
+    •	not use for the moment
 ```
 Example
 ```

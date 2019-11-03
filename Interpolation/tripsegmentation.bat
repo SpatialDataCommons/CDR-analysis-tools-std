@@ -41,6 +41,29 @@ for  %%f in (%input_file%\*) DO   (
 
 rmdir /S /Q %int_output_path%
 
+:: trip padding
+echo start trip padding 
+set output_path_trippadding=%output_path%\trippadding-temp
+set output_path_tripsegment=%output_path%\tripsegment 
+
+rmdir /S /Q %output_path_trippadding% 2> NUL
+mkdir %output_path_trippadding% 2> NUL
+mkdir %output_path%\trippadding 2> NUL
+
+for  %%f in (%output_path%\tripsegment\*.csv) DO   (
+  echo %%f 
+  java -Xmx2G -classpath .;lib/* jp.utokyo.shibalab.cdrworks.TripFormatterMain %threadNum% %%f %output_path_trippadding% 1> %logdir%/stdout-trippadding.log 2> %logdir%/stderr-trippadding.log 
+  
+:: post processing:: merging all files
+  for /D %%f in (%output_path_trippadding%\*) DO   (
+	  echo %%f
+	  type %%f\*csv > %%f.csv 
+  )
+  type %output_path_trippadding%\*.csv > %output_path%\trippadding\pad_%%~nxf
+)
+
+rmdir /S /Q %output_path_trippadding%
+
 
 
 
