@@ -1,5 +1,5 @@
-# CDR Data Analysis Package (Standard Version)
-This is a set of software/tools for analysis of CDR (Call Detail Record) Data including anonymization, pre-processing, interpolation and visualization. 
+# CDR Data Analysis Package (Standalone Edition)
+This is a set of software/tools for analysis of CDR (Call Detail Record) Data including anonymization, pre-processing, interpolation and visualization. It run in a standalone mode with multi-threads support for large data size. For faster processing and scalabiltiy support, please refer to Hadoop Edition (release soon!)
 
 **This repositoty is being update, some modules might not be available yet, keep checking!**
 
@@ -73,6 +73,7 @@ Free to use and distribute with acknowledgement.
 
 ## Acknowledgments
 
+* [Spatial Data Commons](http://sdc.csis.u-tokyo.ac.jp/), CSIS, The University of Tokyo
 * [Shibasaki Lab](https://shiba.iis.u-tokyo.ac.jp), The University of Tokyo
 * [Center for Spatial Information Science](http://www.csis.u-tokyo.ac.jp/en/), The University of Tokyo
 
