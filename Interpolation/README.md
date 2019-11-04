@@ -13,7 +13,6 @@
 * Voronoi data of Cell tower/Base Station location
 * For sample data of POI and road network (88MB), [download here](https://shorturl.at/axMW0)
 
-
 ## Usage
 ### Step 0: Prepare Input Data
 * The input data must be in **CSV format**
@@ -39,6 +38,7 @@
     A59432230,2013-10-01 10:57:00,54,44786,80.6321761,7.478790558
     A59432230,2013-10-01 13:18:00,54,44786,80.6321761,7.478790558
     ``` 
+* *Fictional data are provided in input folder for testing*
 
 ### Step 1: Anoymization
 * If the input contain privacy information such as IMEI, Phone Number and need to be anonymized before start analysis, please refer to Anonymization Tool. 
