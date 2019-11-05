@@ -202,6 +202,8 @@ Put OSM data (.osm.pbf) in the same folder with the script.
 ## Author
 **Hiroshi KANASUGI** :  A project researcher at Center for Spatial Information Science, University of Tokyo.
 
+* **Apichon WITAYANGKURN** :  A project assistant professor at Center for Spatial Information Science, University of Tokyo.
+
 ## License
 
 Free to use
