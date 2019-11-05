@@ -186,7 +186,7 @@ Put OSM data (.osm.pbf) in the same folder with the script.
     TEMP_DIR=/tmp
 
     ```
-. Run command  
+3. Run command  
 
     **For windows**, Open command prompt and navigate to software directory and run command "3_create_building_poi_table.bat"
     ```
@@ -202,7 +202,7 @@ Put OSM data (.osm.pbf) in the same folder with the script.
 ## Author
 **Hiroshi KANASUGI** :  A project researcher at Center for Spatial Information Science, University of Tokyo.
 
-* **Apichon WITAYANGKURN** :  A project assistant professor at Center for Spatial Information Science, University of Tokyo.
+**Apichon WITAYANGKURN** :  A project assistant professor at Center for Spatial Information Science, University of Tokyo.
 
 ## License
 
