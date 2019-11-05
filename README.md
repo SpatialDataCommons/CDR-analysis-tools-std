@@ -56,7 +56,10 @@ ___
 * An windows application tool for visualization of movement/trajectory data such as GPS/CDR. It supports larger dataset compare to Mobmap Online.
 * See the link: [Mobmap Native Win ](/Visualization/MobMapNativeWin)
 ***
-
+#### Infrastructure Updates
+* A set of tools for creating/extracting infrastructure data files/database from OSM (Open Street Map) such as PoI data for reallocation, Road Network Data for route interpolation, Voronoi of Cell Tower 
+* See the link: [Infrastructure Updates](/InfrastructureUpdates)
+***
 
 
 ## Authors
