@@ -2,11 +2,11 @@
 A set of tools for creating/extracting infrastructure data files/database such as PoI data for reallocation, Road Network Data for route interpolation, Voronoi of Cell Tower 
 
 ## How it works
-In principle,  it contain a set of programs/scripts/tools for extracting necessary data from OSM (Open Street Map) Data. OSM data can be downloaded from [geofabrik](http://download.geofabrik.de/) in .osm.pbf format, then import that file to [PostgreSQL](https://www.postgresql.org/download/) (with PostGIS) Database. 
+In principle,  it contain a set of programs/scripts/tools for extracting necessary data from OSM (Open Street Map) Data. OSM data can be downloaded from [geofabrik](http://download.geofabrik.de/) in .osm.pbf format and .shp format, then import that file to [PostgreSQL](https://www.postgresql.org/download/) (with PostGIS) Database. 
 
 ## Prerequisites
 * Linux or Mac environment or Windows
-* OSM data of the target country ([geofabrik](http://download.geofabrik.de/))
+* OSM data of the target country ([geofabrik](http://download.geofabrik.de/)) both .pbf and .shp
 * [PostgreSQL](https://www.postgresql.org/download/) (with PostGIS) Database (tested on 9.6)
 * Make sure PostGIS extension is installed on PostgreSQL
 
@@ -126,7 +126,7 @@ In principle,  it contain a set of programs/scripts/tools for extracting necessa
     OSM_VLD_NODE_TABLE=${OSM_SCHEMA}.osm_node_available
 
     ```
-3. Run command  
+2. Run command  
 
 
     **For windows**, Open command prompt and navigate to software directory and run command "2_osm_assessment.bat"
@@ -138,10 +138,35 @@ In principle,  it contain a set of programs/scripts/tools for extracting necessa
     ```
     [\CDR-analysis-tools-std\InfrastructureUpdates]#./2_osm_assessment.sh
     ```
-4. Check data in database with PgAdmin and exported file on dump folder (_assessment)
+3. Check data in database with PgAdmin and exported file on dump folder (_assessment)
 
 #### Step 3: OSM data conversion on building POI
-1. Edit file  **3_create_building_poi_table.sh** to specify database connection and country name
+1. Extract .shp.zip (ex: sri-lanka-latest-free.shp.zip) downloaded from OSM on
+Put OSM data (.osm.pbf) in the same folder with the script.
+2. Edit file **3_create_building_poi_table.bat** for Windows or **3_create_building_poi_table.sh** for Linux to specify database connection and country name
+    
+    For Windows
+    ```
+    @echo off
+
+    :: ========================================================
+    :: OSM data conversion on building POI
+    :: ========================================================
+    :: POI data from OSM building data
+    :: set parameters
+    set PG_HOST=localhost                                   ## database server ip: localhost
+    set PG_ID=**YOUR_USER**                                 ## user id for PostgreSQL
+    set PGPASSWORD=**YOUR_PASSWORD**                        ## password for PostgreSQL
+    set PG_DB=**YOUR_DB_NAME**                              ## target database name
+    set PG_PORT=5432
+
+    set OSM_SCHEMA=**OSM_COUNTRY_ANME**                     ## country name data such as srilanka    
+    set OSM_BLT_TABLE=${OSM_SCHEMA}.osm_buildings
+    set TEMP_DIR=**FULL_TMP_PATH**   
+    set PG_BIN_PATH=D:\PostgreSQL\9.6\bin
+
+    ```
+    For Linux
     ```
     #!/bin/bash
 
@@ -161,9 +186,14 @@ In principle,  it contain a set of programs/scripts/tools for extracting necessa
     TEMP_DIR=/tmp
 
     ```
-3. Run command  
+. Run command  
 
-    Open terminal navigate to software directory and run command "3_create_building_poi_table.sh"
+    **For windows**, Open command prompt and navigate to software directory and run command "3_create_building_poi_table.bat"
+    ```
+    D:\CDR-analysis-tools-std\InfrastructureUpdates\>3_create_building_poi_table.bat
+    ```
+
+    **For Linux**, Open terminal navigate to software directory and run command "3_create_building_poi_table.sh"
     ```
     [\CDR-analysis-tools-std\InfrastructureUpdates]#./3_create_building_poi_table.sh
     ```
