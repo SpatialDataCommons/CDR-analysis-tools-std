@@ -37,17 +37,17 @@ psql -U %PG_ID% -d %PG_DB%  -h %PG_HOST% -p %PG_PORT% -c "CREATE INDEX idx_%OSM_
 
 :: export road data as tsv format
 mkdir dump\tsv
-psql -d %PG_DB% -h %PG_HOST% -p %PG_PORT%  -q  -c "copy %OSM_BLT_TABLE% to '%TEMP_DIR%\%OSM_BLT_TABLE%.tsv'  (delimiter E'\t',format csv,header true)"
+psql -U %PG_ID% -d %PG_DB% -h %PG_HOST% -p %PG_PORT%  -q  -c "copy %OSM_BLT_TABLE% to '%TEMP_DIR%\%OSM_BLT_TABLE%.tsv'  (delimiter E'\t',format csv,header true)"
 copy %TEMP_DIR%\%OSM_BLT_TABLE%.tsv dump\tsv\
 
 :: dump road data as sql
 mkdir dump\sql
-pg_dump -d %PG_DB%  -h %PG_HOST% -p %PG_PORT% -t %OSM_BLT_TABLE% > dump\sql\%OSM_BLT_TABLE%.sql 
+pg_dump -U %PG_ID% -d %PG_DB%  -h %PG_HOST% -p %PG_PORT% -t %OSM_BLT_TABLE% > dump\sql\%OSM_BLT_TABLE%.sql 
 
 :: dump as shape 
 ::del  -rf dump\shape\shp_osm_buildings
 mkdir dump\shape\shp_osm_buildings
-%PG_BIN_PATH%\pgsql2shp  -h %PG_HOST% -p %PG_PORT%  -f dump\shape\shp_osm_buildings\%OSM_BLT_TABLE%.shp %PG_DB% "select gid,osm_id,name,type,area,centroid from %OSM_BLT_TABLE% where centroid is not null"
+%PG_BIN_PATH%\pgsql2shp -P %PGPASSWORD% -u %PG_ID% -h %PG_HOST% -p %PG_PORT%  -f dump\shape\shp_osm_buildings\%OSM_BLT_TABLE%.shp %PG_DB% "select gid,osm_id,name,type,area,centroid from %OSM_BLT_TABLE% where centroid is not null"
 
 psql -U %PG_ID% -d %PG_DB%  -h %PG_HOST% -p %PG_PORT%  -q -AF, -c "select type,count(*) as N from %OSM_BLT_TABLE% group by type order by N desc" > dump\%OSM_BLT_TABLE%.fclass_stats.txt
 :: 
