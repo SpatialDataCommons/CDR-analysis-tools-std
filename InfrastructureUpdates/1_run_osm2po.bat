@@ -48,14 +48,14 @@ psql -U %PG_ID% -d %PG_DB% -h %PG_HOST% -p %PG_PORT% -q -c "select count(*) as N
 echo  export road data as tsv File...
 mkdir tmp
 mkdir dump\tsv
-psql -d %PG_DB% -h %PG_HOST% -p %PG_PORT% -q -c "copy %OSM_SCHEMA%.osm_road to '%TEMP_DIR%\%OSM_SCHEMA%.osm_road.tsv'  (delimiter E'\t',format csv,encoding 'UTF-8',header true)"
+psql -U %PG_ID% -d %PG_DB% -h %PG_HOST% -p %PG_PORT% -q -c "copy %OSM_SCHEMA%.osm_road to '%TEMP_DIR%\%OSM_SCHEMA%.osm_road.tsv'  (delimiter E'\t',format csv,encoding 'UTF-8',header true)"
 copy %TEMP_DIR%\%OSM_SCHEMA%.osm_road.tsv dump\tsv\
 
 :: dump road data as sql File
 mkdir  dump\sql
-pg_dump -d %PG_DB% -h %PG_HOST% -p %PG_PORT% -t %OSM_SCHEMA%.osm_road > dump\sql\%OSM_SCHEMA%.osm_road.sql 
+pg_dump -U %PG_ID% -d %PG_DB% -h %PG_HOST% -p %PG_PORT% -t %OSM_SCHEMA%.osm_road > dump\sql\%OSM_SCHEMA%.osm_road.sql 
 
 :: extract road data as shape data
 mkdir dump\shape\shp_osm_road
-%PG_BIN_PATH%\pgsql2shp  -h %PG_HOST% -p %PG_PORT% -f dump\shape\shp_osm_road\%OSM_SCHEMA%_osm_road.shp %PG_DB% %OSM_SCHEMA%.osm_road
+%PG_BIN_PATH%\pgsql2shp -P %PGPASSWORD% -u %PG_ID% -h %PG_HOST% -p %PG_PORT% -f dump\shape\shp_osm_road\%OSM_SCHEMA%_osm_road.shp %PG_DB% %OSM_SCHEMA%.osm_road
 
