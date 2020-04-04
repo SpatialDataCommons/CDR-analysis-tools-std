@@ -59,18 +59,18 @@ psql -U %PG_ID% -d %PG_DB% -h %PG_HOST% -p %PG_PORT% -q -c "create index idx_%OS
 psql -U %PG_ID% -d %PG_DB% -h %PG_HOST% -p %PG_PORT% -q -c "create index idx_%OSM_SCHEMA%_osm_road_assessment_nodeid on %OSM_CHK_TABLE% using btree(nodeid)"
 
 :: import from TSV
-psql             -d %PG_DB% -h %PG_HOST% -p %PG_PORT% -q -c "copy   %OSM_CHK_TABLE% from '%TEMP_DIR%\%OUTFILE%'  (delimiter E'\t',format csv,encoding 'UTF-8',header true)"
+psql -U %PG_ID% -d %PG_DB% -h %PG_HOST% -p %PG_PORT% -q -c "copy   %OSM_CHK_TABLE% from '%TEMP_DIR%\%OUTFILE%'  (delimiter E'\t',format csv,encoding 'UTF-8',header true)"
 del %TEMP_DIR%\%OUTFILE%
 
 mkdir dump\tsv
-psql -d %PG_DB% -h %PG_HOST% -p %PG_PORT% -q -c  "copy  %OSM_CHK_TABLE% to '%TEMP_DIR%\%OUTFILE%'  (delimiter E'\t',format csv,encoding 'UTF-8',header true)"
+psql -U %PG_ID% -d %PG_DB% -h %PG_HOST% -p %PG_PORT% -q -c  "copy  %OSM_CHK_TABLE% to '%TEMP_DIR%\%OUTFILE%'  (delimiter E'\t',format csv,encoding 'UTF-8',header true)"
 move %TEMP_DIR%\%OUTFILE% dump\tsv\
 
 mkdir dump\sql
-pg_dump -d %PG_DB% -h %PG_HOST% -p %PG_PORT% -t %OSM_CHK_TABLE% > dump\sql\%OSM_CHK_TABLE%.sql
+pg_dump -U %PG_ID% -d %PG_DB% -h %PG_HOST% -p %PG_PORT% -t %OSM_CHK_TABLE% > dump\sql\%OSM_CHK_TABLE%.sql
 
 mkdir dump\shape\shp_%OSM_CHK_TABLE%
-%PG_BIN_PATH%\pgsql2shp -h %PG_HOST% -p %PG_PORT% -f dump\shape\shp_%OSM_CHK_TABLE%\%OSM_CHK_TABLE%.shp %PG_DB% %OSM_CHK_TABLE%
+%PG_BIN_PATH%\pgsql2shp -P %PGPASSWORD% -u %PG_ID% -h %PG_HOST% -p %PG_PORT% -f dump\shape\shp_%OSM_CHK_TABLE%\%OSM_CHK_TABLE%.shp %PG_DB% %OSM_CHK_TABLE%
 
 
 
@@ -94,11 +94,11 @@ copy %TEMP_DIR%\%OSM_VLD_LINK_TABLE%.tsv dump\tsv\
 
 ::  dump as SQL file
 mkdir dump\sql 
-pg_dump -d %PG_DB% -h %PG_HOST% -p %PG_PORT% -t %OSM_VLD_LINK_TABLE% > dump\sql\%OSM_VLD_LINK_TABLE%.sql
+pg_dump -U %PG_ID% -d %PG_DB% -h %PG_HOST% -p %PG_PORT% -t %OSM_VLD_LINK_TABLE% > dump\sql\%OSM_VLD_LINK_TABLE%.sql
 
 ::  dump as Shape data
 mkdir dump\shape\shp_%OSM_VLD_LINK_TABLE%
-%PG_BIN_PATH%\pgsql2shp -h %PG_HOST% -p %PG_PORT% -f dump\shape\shp_%OSM_VLD_LINK_TABLE%\%OSM_VLD_LINK_TABLE%.shp %PG_DB% %OSM_VLD_LINK_TABLE%
+%PG_BIN_PATH%\pgsql2shp -P %PGPASSWORD% -u %PG_ID% -h %PG_HOST% -p %PG_PORT% -f dump\shape\shp_%OSM_VLD_LINK_TABLE%\%OSM_VLD_LINK_TABLE%.shp %PG_DB% %OSM_VLD_LINK_TABLE%
 
 
 
@@ -120,11 +120,11 @@ copy %TEMP_DIR%\%OSM_VLD_NODE_TABLE%.tsv dump\tsv\
 
 ::  dump as SQL file
 mkdir dump\sql
-pg_dump -d %PG_DB% -h %PG_HOST% -p %PG_PORT% -t %OSM_VLD_NODE_TABLE% > dump\sql\%OSM_VLD_NODE_TABLE%.sql
+pg_dump -U %PG_ID% -d %PG_DB% -h %PG_HOST% -p %PG_PORT% -t %OSM_VLD_NODE_TABLE% > dump\sql\%OSM_VLD_NODE_TABLE%.sql
 
 ::  dump as shape data
 mkdir dump\shape\shp_%OSM_VLD_NODE_TABLE%
-%PG_BIN_PATH%\pgsql2shp  -h %PG_HOST% -p %PG_PORT% -f dump\shape\shp_%OSM_VLD_NODE_TABLE%\%OSM_VLD_NODE_TABLE%.shp %PG_DB% %OSM_VLD_NODE_TABLE%
+%PG_BIN_PATH%\pgsql2shp -P %PGPASSWORD% -u %PG_ID% -h %PG_HOST% -p %PG_PORT% -f dump\shape\shp_%OSM_VLD_NODE_TABLE%\%OSM_VLD_NODE_TABLE%.shp %PG_DB% %OSM_VLD_NODE_TABLE%
 
 
 
