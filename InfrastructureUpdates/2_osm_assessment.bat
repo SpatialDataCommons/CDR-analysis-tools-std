@@ -14,6 +14,7 @@ set PG_HOST=localhost
 set PG_PORT=5432
 set TEMP_DIR=**FULL_TMP_PATH**   
 set PG_BIN_PATH=D:\PostgreSQL\9.6\bin
+set PATH=%PATH%;%PG_BIN_PATH%
 
 :: set tablee naems
 set OSM_SCHEMA=**OSM_COUNTRY_ANME**        
