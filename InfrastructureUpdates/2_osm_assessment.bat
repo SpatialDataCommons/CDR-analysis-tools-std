@@ -71,7 +71,7 @@ mkdir dump\sql
 pg_dump -U %PG_ID% -d %PG_DB% -h %PG_HOST% -p %PG_PORT% -t %OSM_CHK_TABLE% > dump\sql\%OSM_CHK_TABLE%.sql
 
 mkdir dump\shape\shp_%OSM_CHK_TABLE%
-%PG_BIN_PATH%\pgsql2shp -P %PGPASSWORD% -u %PG_ID% -h %PG_HOST% -p %PG_PORT% -f dump\shape\shp_%OSM_CHK_TABLE%\%OSM_CHK_TABLE%.shp %PG_DB% %OSM_CHK_TABLE%
+pgsql2shp -P %PGPASSWORD% -u %PG_ID% -h %PG_HOST% -p %PG_PORT% -f dump\shape\shp_%OSM_CHK_TABLE%\%OSM_CHK_TABLE%.shp %PG_DB% %OSM_CHK_TABLE%
 
 
 
@@ -99,7 +99,7 @@ pg_dump -U %PG_ID% -d %PG_DB% -h %PG_HOST% -p %PG_PORT% -t %OSM_VLD_LINK_TABLE% 
 
 ::  dump as Shape data
 mkdir dump\shape\shp_%OSM_VLD_LINK_TABLE%
-%PG_BIN_PATH%\pgsql2shp -P %PGPASSWORD% -u %PG_ID% -h %PG_HOST% -p %PG_PORT% -f dump\shape\shp_%OSM_VLD_LINK_TABLE%\%OSM_VLD_LINK_TABLE%.shp %PG_DB% %OSM_VLD_LINK_TABLE%
+pgsql2shp -P %PGPASSWORD% -u %PG_ID% -h %PG_HOST% -p %PG_PORT% -f dump\shape\shp_%OSM_VLD_LINK_TABLE%\%OSM_VLD_LINK_TABLE%.shp %PG_DB% %OSM_VLD_LINK_TABLE%
 
 
 
@@ -125,7 +125,7 @@ pg_dump -U %PG_ID% -d %PG_DB% -h %PG_HOST% -p %PG_PORT% -t %OSM_VLD_NODE_TABLE% 
 
 ::  dump as shape data
 mkdir dump\shape\shp_%OSM_VLD_NODE_TABLE%
-%PG_BIN_PATH%\pgsql2shp -P %PGPASSWORD% -u %PG_ID% -h %PG_HOST% -p %PG_PORT% -f dump\shape\shp_%OSM_VLD_NODE_TABLE%\%OSM_VLD_NODE_TABLE%.shp %PG_DB% %OSM_VLD_NODE_TABLE%
+pgsql2shp -P %PGPASSWORD% -u %PG_ID% -h %PG_HOST% -p %PG_PORT% -f dump\shape\shp_%OSM_VLD_NODE_TABLE%\%OSM_VLD_NODE_TABLE%.shp %PG_DB% %OSM_VLD_NODE_TABLE%
 
 
 

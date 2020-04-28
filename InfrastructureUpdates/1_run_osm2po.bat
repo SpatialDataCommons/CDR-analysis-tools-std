@@ -58,5 +58,5 @@ pg_dump -U %PG_ID% -d %PG_DB% -h %PG_HOST% -p %PG_PORT% -t %OSM_SCHEMA%.osm_road
 
 :: extract road data as shape data
 mkdir dump\shape\shp_osm_road
-%PG_BIN_PATH%\pgsql2shp -P %PGPASSWORD% -u %PG_ID% -h %PG_HOST% -p %PG_PORT% -f dump\shape\shp_osm_road\%OSM_SCHEMA%_osm_road.shp %PG_DB% %OSM_SCHEMA%.osm_road
+pgsql2shp -P %PGPASSWORD% -u %PG_ID% -h %PG_HOST% -p %PG_PORT% -f dump\shape\shp_osm_road\%OSM_SCHEMA%_osm_road.shp %PG_DB% %OSM_SCHEMA%.osm_road
 
