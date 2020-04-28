@@ -12,7 +12,7 @@ set PG_DB=**YOUR_DB_NAME**
 set PG_PORT=5432
 set PG_BIN_PATH=D:\PostgreSQL\9.6\bin
 set OSM_SCHEMA=**OSM_COUNTRY_ANME**
-set TEMP_DIR=**FULL_TMP_PATH**
+set TEMP_DIR=%TEMP%
 set OSM_BLT_TABLE=%OSM_SCHEMA%.osm_buildings
 set PATH=%PATH%;%PG_BIN_PATH%
 
