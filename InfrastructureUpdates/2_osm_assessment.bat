@@ -8,16 +8,16 @@
 ::  ::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 ::  parameters for PostgreSQL access  
 set PG_ID=**YOUR_USER**
-set PGPASSWORD=**YOUR_PASSWORD** 
+set PGPASSWORD=**YOUR_PASSWORD**
 set PG_DB=**YOUR_DB_NAME**
 set PG_HOST=localhost
 set PG_PORT=5432
-set TEMP_DIR=**FULL_TMP_PATH**   
+set TEMP_DIR=**FULL_TMP_PATH**
 set PG_BIN_PATH=D:\PostgreSQL\9.6\bin
 set PATH=%PATH%;%PG_BIN_PATH%
 
 :: set tablee naems
-set OSM_SCHEMA=**OSM_COUNTRY_ANME**        
+set OSM_SCHEMA=**OSM_COUNTRY_ANME**
 set OSM_ORG_TABLE=%OSM_SCHEMA%.osm_road
 set OSM_CHK_TABLE=%OSM_SCHEMA%.osm_road_assessment
 set OSM_VLD_LINK_TABLE=%OSM_SCHEMA%.osm_road_available
