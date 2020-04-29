@@ -49,6 +49,7 @@ psql -U %PG_ID% -d %PG_DB% -h %PG_HOST% -p %PG_PORT% -q -c "select count(*) as N
 echo  export road data as tsv File...
 mkdir tmp
 mkdir dump\tsv
+cacls %TEMP_DIR% /e /p Everyone:f
 psql -U %PG_ID% -d %PG_DB% -h %PG_HOST% -p %PG_PORT% -q -c "copy %OSM_SCHEMA%.osm_road to '%TEMP_DIR%\%OSM_SCHEMA%.osm_road.tsv'  (delimiter E'\t',format csv,encoding 'UTF-8',header true)"
 copy %TEMP_DIR%\%OSM_SCHEMA%.osm_road.tsv dump\tsv\
 

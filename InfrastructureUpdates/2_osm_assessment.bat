@@ -60,10 +60,13 @@ psql -U %PG_ID% -d %PG_DB% -h %PG_HOST% -p %PG_PORT% -q -c "create index idx_%OS
 psql -U %PG_ID% -d %PG_DB% -h %PG_HOST% -p %PG_PORT% -q -c "create index idx_%OSM_SCHEMA%_osm_road_assessment_nodeid on %OSM_CHK_TABLE% using btree(nodeid)"
 
 :: import from TSV
+cacls %TEMP_DIR% /e /p Everyone:f
+cacls %TEMP_DIR%\%OUTFILE% /e /p Everyone:f
 psql -U %PG_ID% -d %PG_DB% -h %PG_HOST% -p %PG_PORT% -q -c "copy   %OSM_CHK_TABLE% from '%TEMP_DIR%\%OUTFILE%'  (delimiter E'\t',format csv,encoding 'UTF-8',header true)"
 del %TEMP_DIR%\%OUTFILE%
 
 mkdir dump\tsv
+cacls dump\tsv /e /p Everyone:f
 psql -U %PG_ID% -d %PG_DB% -h %PG_HOST% -p %PG_PORT% -q -c  "copy  %OSM_CHK_TABLE% to '%TEMP_DIR%\%OUTFILE%'  (delimiter E'\t',format csv,encoding 'UTF-8',header true)"
 move %TEMP_DIR%\%OUTFILE% dump\tsv\
 
@@ -90,6 +93,7 @@ psql -U %PG_ID% -d %PG_DB% -h %PG_HOST% -p %PG_PORT% -q -c "create index idx_%OS
 ::  ::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 ::  dump as TSV file
 mkdir dump\tsv
+cacls dump\tsv /e /p Everyone:f
 psql -U %PG_ID% -d %PG_DB% -h %PG_HOST% -p %PG_PORT% -q -c "copy (select * from %OSM_VLD_LINK_TABLE%) to '%TEMP_DIR%\%OSM_VLD_LINK_TABLE%.tsv'   (delimiter E'\t',format csv,encoding 'UTF-8',header true)"
 copy %TEMP_DIR%\%OSM_VLD_LINK_TABLE%.tsv dump\tsv\
 
@@ -116,6 +120,7 @@ psql -U %PG_ID% -d %PG_DB% -h %PG_HOST% -p %PG_PORT% -q -c "create index idx_%OS
 ::  ::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 ::  dump as TSV file
 mkdir dump\tsv
+cacls dump\tsv /e /p Everyone:f
 psql -U %PG_ID% -d %PG_DB% -h %PG_HOST% -p %PG_PORT% -q -c "copy (select * from %OSM_VLD_NODE_TABLE%) to '%TEMP_DIR%\%OSM_VLD_NODE_TABLE%.tsv'  (delimiter E'\t',format csv,encoding 'UTF-8',header true)"
 copy %TEMP_DIR%\%OSM_VLD_NODE_TABLE%.tsv dump\tsv\
 
