@@ -5,13 +5,14 @@
 ::  ::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 
 set PG_ID=**YOUR_USER**
-set PGPASSWORD=**YOUR_PASSWORD** 
+set PGPASSWORD=**YOUR_PASSWORD**
 set PG_DB=**YOUR_DB_NAME**
 set PG_HOST=localhost
 set PG_PORT=5432
-set OSM_SCHEMA=**OSM_COUNTRY_ANME**      
-set TEMP_DIR=**FULL_TMP_PATH**   
+set OSM_SCHEMA=**OSM_COUNTRY_ANME**
+set TEMP_DIR=%TEMP%
 set PG_BIN_PATH=D:\PostgreSQL\9.6\bin
+set PATH=%PATH%;%PG_BIN_PATH%
 
 ::  ::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 ::  run osm2po to convert OSM pbf data into SQL
@@ -48,6 +49,7 @@ psql -U %PG_ID% -d %PG_DB% -h %PG_HOST% -p %PG_PORT% -q -c "select count(*) as N
 echo  export road data as tsv File...
 mkdir tmp
 mkdir dump\tsv
+cacls %TEMP_DIR% /e /p Everyone:f
 psql -U %PG_ID% -d %PG_DB% -h %PG_HOST% -p %PG_PORT% -q -c "copy %OSM_SCHEMA%.osm_road to '%TEMP_DIR%\%OSM_SCHEMA%.osm_road.tsv'  (delimiter E'\t',format csv,encoding 'UTF-8',header true)"
 copy %TEMP_DIR%\%OSM_SCHEMA%.osm_road.tsv dump\tsv\
 
@@ -57,5 +59,5 @@ pg_dump -U %PG_ID% -d %PG_DB% -h %PG_HOST% -p %PG_PORT% -t %OSM_SCHEMA%.osm_road
 
 :: extract road data as shape data
 mkdir dump\shape\shp_osm_road
-%PG_BIN_PATH%\pgsql2shp -P %PGPASSWORD% -u %PG_ID% -h %PG_HOST% -p %PG_PORT% -f dump\shape\shp_osm_road\%OSM_SCHEMA%_osm_road.shp %PG_DB% %OSM_SCHEMA%.osm_road
+pgsql2shp -P %PGPASSWORD% -u %PG_ID% -h %PG_HOST% -p %PG_PORT% -f dump\shape\shp_osm_road\%OSM_SCHEMA%_osm_road.shp %PG_DB% %OSM_SCHEMA%.osm_road
 

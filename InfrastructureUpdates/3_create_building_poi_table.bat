@@ -11,14 +11,14 @@ set PGPASSWORD=**YOUR_PASSWORD**
 set PG_DB=**YOUR_DB_NAME**
 set PG_PORT=5432
 set PG_BIN_PATH=D:\PostgreSQL\9.6\bin
-set OSM_SCHEMA=**OSM_COUNTRY_ANME**    
-set TEMP_DIR=**FULL_TMP_PATH**  
+set OSM_SCHEMA=**OSM_COUNTRY_ANME**
+set TEMP_DIR=%TEMP%
 set OSM_BLT_TABLE=%OSM_SCHEMA%.osm_buildings
-
+set PATH=%PATH%;%PG_BIN_PATH%
 
 :: convert shape to sql
 
-%PG_BIN_PATH%\shp2pgsql -s 4326:4326 -I %OSM_SCHEMA%-latest-free.shp\gis_osm_buildings_a_free_1.shp %OSM_BLT_TABLE% > %OSM_SCHEMA%.osm_buildings.sql
+shp2pgsql -s 4326:4326 -I %OSM_SCHEMA%-latest-free.shp\gis_osm_buildings_a_free_1.shp %OSM_BLT_TABLE% > %OSM_SCHEMA%.osm_buildings.sql
 
 :: import into PostgreSQL/PostGIS DB
 psql -U %PG_ID% -d %PG_DB%  -h %PG_HOST% -p %PG_PORT% -c "create schema if not exists %OSM_SCHEMA%;"
@@ -47,7 +47,7 @@ pg_dump -U %PG_ID% -d %PG_DB%  -h %PG_HOST% -p %PG_PORT% -t %OSM_BLT_TABLE% > du
 :: dump as shape 
 ::del  -rf dump\shape\shp_osm_buildings
 mkdir dump\shape\shp_osm_buildings
-%PG_BIN_PATH%\pgsql2shp -P %PGPASSWORD% -u %PG_ID% -h %PG_HOST% -p %PG_PORT%  -f dump\shape\shp_osm_buildings\%OSM_BLT_TABLE%.shp %PG_DB% "select gid,osm_id,name,type,area,centroid from %OSM_BLT_TABLE% where centroid is not null"
+pgsql2shp -P %PGPASSWORD% -u %PG_ID% -h %PG_HOST% -p %PG_PORT%  -f dump\shape\shp_osm_buildings\%OSM_BLT_TABLE%.shp %PG_DB% "select gid,osm_id,name,type,area,centroid from %OSM_BLT_TABLE% where centroid is not null"
 
 psql -U %PG_ID% -d %PG_DB%  -h %PG_HOST% -p %PG_PORT%  -q -AF, -c "select type,count(*) as N from %OSM_BLT_TABLE% group by type order by N desc" > dump\%OSM_BLT_TABLE%.fclass_stats.txt
 :: 
